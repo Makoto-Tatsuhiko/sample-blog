@@ -7,8 +7,23 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container">
     <div layout:fragment="admin">
-        <h1>Author form</h1>
+        <form action="a" th:action="@{/author}" th:object="${author}" method="post">
+            <div class="form-group row mt-5">
+                <label for="name" class="col-sm-2 form-label">Name</label>
+                <div class="col-sm-8">
+                    <input id="name" th:field="*{name}" type="text" class="form-control">
+
+                    <p th:if="${#fields.errors('name')}"  class="text-danger" th:errors="*{name}"></p>
+
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Submit</button>
+        </form>
     </div>
+</div>
 </body>
 </html>
